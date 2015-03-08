@@ -4,7 +4,7 @@
     <groupId>com.opencsv</groupId>
     <artifactId>opencsv</artifactId>
     <packaging>bundle</packaging>
-    <version>3.3-SNAPSHOT</version>
+    <version>3.3</version>
     <name>opencsv</name>
     <description>A simple library for reading and writing CSV in Java</description>
     <url>http://opencsv.sf.net</url>
@@ -362,7 +362,7 @@
         -->
         <site>
             <id>opencsv.sf.net</id>
-            <url>scp://web.sourceforge.net/home/project-web/opencsv/htdocs/</url>
+            <url>scp://shell.sourceforge.net/home/project-web/opencsv/htdocs/</url>
         </site>
     </distributionManagement>
 </project>
