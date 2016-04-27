@@ -499,7 +499,6 @@ public class CSVParserTest {
         assertFalse(csvParser.isNextCharacterEscapable(ESCAPE_TEST_STRING, false, lastChar));
     }
 
-
     @Test
     public void whitespaceBeforeEscape() throws IOException {
         String[] nextItem = csvParser.parseLine("\"this\", \"is\",\"a test\""); //"this", "is","a test"
