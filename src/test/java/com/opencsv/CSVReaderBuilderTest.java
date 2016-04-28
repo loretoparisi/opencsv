@@ -25,15 +25,15 @@ public class CSVReaderBuilderTest {
       assertSame(reader, builder.getReader());
       assertNull(builder.getCsvParser());
       assertEquals(
-            CSVReader.DEFAULT_SKIP_LINES,
+              CSVReader.DEFAULT_SKIP_LINES,
               builder.getSkipLines());
 
       final CSVReader csvReader = builder.build();
-       assertEquals(
-               CSVReader.DEFAULT_SKIP_LINES,
+      assertEquals(
+              CSVReader.DEFAULT_SKIP_LINES,
               csvReader.getSkipLines());
-       assertEquals(CSVReader.DEFAULT_KEEP_CR, csvReader.keepCarriageReturns());
-       assertEquals(CSVReader.DEFAULT_VERIFY_READER, csvReader.verifyReader());
+      assertEquals(CSVReader.DEFAULT_KEEP_CR, csvReader.keepCarriageReturns());
+      assertEquals(CSVReader.DEFAULT_VERIFY_READER, csvReader.verifyReader());
    }
 
    @Test(expected = IllegalArgumentException.class)
@@ -70,14 +70,14 @@ public class CSVReaderBuilderTest {
       assertSame(99, actual.getSkipLines());
    }
 
-    @Test
-    public void testWithKeepCR() {
-        builder.withKeepCarriageReturn(true);
-        assertTrue(builder.keepCarriageReturn());
+   @Test
+   public void testWithKeepCR() {
+      builder.withKeepCarriageReturn(true);
+      assertTrue(builder.keepCarriageReturn());
 
-        final CSVReader actual = builder.build();
-        assertTrue(actual.keepCarriageReturns());
-    }
+      final CSVReader actual = builder.build();
+      assertTrue(actual.keepCarriageReturns());
+   }
 
    @Test
    public void testWithSkipLinesZero() {
@@ -99,16 +99,16 @@ public class CSVReaderBuilderTest {
       assertSame(0, actual.getSkipLines());
    }
 
-    @Test
-    public void testWithVerifyReader() {
-        final CSVReader reader = builder.withVerifyReader(false).build();
-        assertFalse(reader.verifyReader());
-    }
+   @Test
+   public void testWithVerifyReader() {
+      final CSVReader reader = builder.withVerifyReader(false).build();
+      assertFalse(reader.verifyReader());
+   }
 
-    @Test
-    public void builderWithNullFieldIndicator() {
-        final CSVReader reader = builder.withFieldAsNull(CSVReaderNullFieldIndicator.EMPTY_SEPARATORS).build();
+   @Test
+   public void builderWithNullFieldIndicator() {
+      final CSVReader reader = builder.withFieldAsNull(CSVReaderNullFieldIndicator.EMPTY_SEPARATORS).build();
 
-        assertEquals(CSVReaderNullFieldIndicator.EMPTY_SEPARATORS, reader.getParser().nullFieldIndicator());
-    }
+      assertEquals(CSVReaderNullFieldIndicator.EMPTY_SEPARATORS, reader.getParser().nullFieldIndicator());
+   }
 }
