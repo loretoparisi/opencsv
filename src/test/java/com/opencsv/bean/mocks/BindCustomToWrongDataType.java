@@ -19,7 +19,7 @@ import com.opencsv.bean.CsvCustomBindByName;
 import com.opencsv.bean.customconverter.ConvertGermanToBoolean;
 
 /**
- * For test case 29 (writing).
+ * For test case "writing bad data with exceptions captured".
  * @author Andrew Rucker Jones
  */
 public class BindCustomToWrongDataType {

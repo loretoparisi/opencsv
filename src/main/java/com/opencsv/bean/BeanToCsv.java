@@ -85,7 +85,7 @@ public class BeanToCsv<T> {
             csv.writeNext(line);
             return true;
         } catch (Exception e) {
-            throw new RuntimeException("Error writing Bean!", e);
+            throw new RuntimeException("Error writing bean!", e);
         }
     }
 
@@ -109,7 +109,7 @@ public class BeanToCsv<T> {
             processAndWriteObjects(csv, objects, getters);
             return true;
         } catch (Exception e) {
-            throw new RuntimeException("Error writing CSV !", e);
+            throw new RuntimeException("Error writing CSV!", e);
         }
     }
 

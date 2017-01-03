@@ -44,15 +44,15 @@ public class StatefulBeanToCsv<T> {
     /** The beans being written are counted in the order they are written. */
     private int lineNumber = 0;
     
-    private Character separator = null;
-    private Character quotechar = null;
-    private Character escapechar = null;
-    private String lineEnd = null;
+    private final char separator;
+    private final char quotechar;
+    private final char escapechar;
+    private final String lineEnd;
     private boolean headerWritten = false;
-    private MappingStrategy<T> mappingStrategy = null;
+    private MappingStrategy<T> mappingStrategy;
     private final Writer writer;
     private CSVWriter csvwriter;
-    private boolean throwExceptions = true;
+    private boolean throwExceptions;
     private List<CsvException> capturedExceptions = new ArrayList<CsvException>();
     private static final String INTROSPECTION_ERROR = "There was an error while manipulating the bean to be written.";
     
@@ -63,25 +63,27 @@ public class StatefulBeanToCsv<T> {
     
     /**
      * The only constructor that should be used.
+     * 
+     * @param escapechar The escape character to use when writing a CSV file
+     * @param lineEnd The line ending to use when writing a CSV file
+     * @param mappingStrategy The mapping strategy to use when writing a CSV file
+     * @param quotechar The quote character to use when writing a CSV file
+     * @param separator The field separator to use when writing a CSV file
+     * @param throwExceptions Whether or not exceptions should be thrown while
+     *   writing the CSV file. If not, they are collected and can be retrieved
+     *   via {@link #getCapturedExceptions() }.
      * @param writer A {@link java.io.Writer} for writing the beans as a CSV to
      */
-    public StatefulBeanToCsv(Writer writer) {
-        this.writer = writer;
-    }
-    
-    /**
-     * Sets the mapping strategy for writing beans to a CSV destination.
-     * <p>If the mapping strategy is set this way, it will always be used instead
-     * of automatic determination of an appropriate mapping strategy.</p>
-     * <p>It is perfectly legitimate to read a CSV source, take the mapping
-     * strategy from the read operation, and pass it in to this method for a
-     * write operation. This conserves some processing time, but, more
-     * importantly, preserves header ordering.</p>
-     * 
-     * @param mappingStrategy The mapping strategy to be used for write operations
-     */
-    public void setMappingStrategy(MappingStrategy<T> mappingStrategy) {
+    public StatefulBeanToCsv(char escapechar, String lineEnd,
+            MappingStrategy<T> mappingStrategy, char quotechar, char separator,
+            boolean throwExceptions, Writer writer) {
+        this.escapechar = escapechar;
+        this.lineEnd = lineEnd;
         this.mappingStrategy = mappingStrategy;
+        this.quotechar = quotechar;
+        this.separator = separator;
+        this.throwExceptions = throwExceptions;
+        this.writer = writer;
     }
     
     /**
@@ -98,10 +100,6 @@ public class StatefulBeanToCsv<T> {
         }
         
         // Build CSVWriter
-        if(separator == null) {separator = CSVWriter.DEFAULT_SEPARATOR;}
-        if(quotechar == null) {quotechar = CSVWriter.DEFAULT_QUOTE_CHARACTER;}
-        if(escapechar == null) {escapechar = CSVWriter.DEFAULT_ESCAPE_CHARACTER;}
-        if(lineEnd == null) {lineEnd = CSVWriter.DEFAULT_LINE_END;}
         csvwriter = new CSVWriter(writer, separator, quotechar, escapechar, lineEnd);
         
         // Write the header
@@ -215,15 +213,6 @@ public class StatefulBeanToCsv<T> {
     }
 
     /**
-     * @param throwExceptions Sets whether exceptions should be thrown during
-     *   writing of beans to a CSV destination. If they are not thrown, they are
-     *   captured and returned later via {@link #getCapturedExceptions()}.
-     */
-    public void setThrowExceptions(boolean throwExceptions) {
-        this.throwExceptions = throwExceptions;
-    }
-    
-    /**
      * Any exceptions captured during writing of beans to a CSV destination can
      * be retrieved through this method.
      * <p><em>Reads from the list are destructive!</em> Calling this method will
@@ -239,45 +228,5 @@ public class StatefulBeanToCsv<T> {
         List<CsvException> intermediate = capturedExceptions;
         capturedExceptions = new ArrayList<CsvException>();
         return intermediate;
-    }
-    
-    /**
-     * @see com.opencsv.CSVWriter#separator
-     * @param separator Silence JavaDoc warnings
-     * @return Silence JavaDoc warnings
-     */
-    public StatefulBeanToCsv withSeparator(char separator) {
-        this.separator = separator;
-        return this;
-    }
-    
-    /**
-     * @see com.opencsv.CSVWriter#quotechar
-     * @param quotechar Silence JavaDoc warnings
-     * @return Silence JavaDoc warnings
-     */
-    public StatefulBeanToCsv withQuotechar(char quotechar) {
-        this.quotechar = quotechar;
-        return this;
-    }
-    
-    /**
-     * @see com.opencsv.CSVWriter#escapechar
-     * @param escapechar Silence JavaDoc warnings
-     * @return Silence JavaDoc warnings
-     */
-    public StatefulBeanToCsv withEscapechar(char escapechar) {
-        this.escapechar = escapechar;
-        return this;
-    }
-    
-    /**
-     * @see com.opencsv.CSVWriter#lineEnd
-     * @param lineEnd Silence JavaDoc warnings
-     * @return Silence JavaDoc warnings
-     */
-    public StatefulBeanToCsv withLineEnd(String lineEnd) {
-        this.lineEnd = lineEnd;
-        return this;
     }
 }

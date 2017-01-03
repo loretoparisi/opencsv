@@ -18,7 +18,7 @@ package com.opencsv.bean.mocks;
 import com.opencsv.bean.CsvBindByName;
 
 /**
- * For test case 20 (writing).
+ * For test case "writing when getter is private".
  * @author Andrew Rucker Jones
  */
 public class GetterPrivate {

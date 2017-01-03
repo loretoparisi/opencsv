@@ -337,4 +337,149 @@ public class BeanToCsvTest {
       assertNotNull(content);
       assertEquals(NULL_TEST_STRING, content);
    }
+   
+   @Test(expected = RuntimeException.class)
+   public void throwRuntimeExceptionWhenExceptionIsThrownStatic() {
+      StringWriter sw = new StringWriter();
+      CSVWriter writer = new CSVWriter(sw);
+      BeanToCsv.write(createErrorMappingStrategy(), writer, testData);
+   }
+
+   @Test
+   public void beanReturnsFalseOnEmptyListStatic() {
+      ColumnPositionMappingStrategy<MockBean> strat = new ColumnPositionMappingStrategy<MockBean>();
+      strat.setType(MockBean.class);
+      String[] columns = new String[]{"name", "orderNumber", "num"};
+      strat.setColumnMapping(columns);
+
+      StringWriter sw = new StringWriter();
+
+      assertFalse(BeanToCsv.write(strat, sw, new ArrayList<MockBean>()));
+   }
+
+   @Test
+   public void beanReturnsFalseOnNullStatic() {
+      ColumnPositionMappingStrategy<MockBean> strat = new ColumnPositionMappingStrategy<MockBean>();
+      strat.setType(MockBean.class);
+      String[] columns = new String[]{"name", "orderNumber", "num"};
+      strat.setColumnMapping(columns);
+
+      StringWriter sw = new StringWriter();
+
+      assertFalse(BeanToCsv.write(strat, sw, null));
+   }
+
+   @Test
+   public void testWriteQuotesStatic() throws IOException {
+      ColumnPositionMappingStrategy<MockBean> strat = new ColumnPositionMappingStrategy<MockBean>();
+      strat.setType(MockBean.class);
+      String[] columns = new String[]{"name", "orderNumber", "num"};
+      strat.setColumnMapping(columns);
+
+      StringWriter sw = new StringWriter();
+
+      boolean value = BeanToCsv.write(strat, sw, testData);
+
+      assertTrue(value);
+
+      String content = sw.getBuffer().toString();
+      assertNotNull(content);
+      assertEquals(TEST_STRING, content);
+   }
+
+   @Test
+   public void writeBeansOneAtATimeStatic() {
+      ColumnPositionMappingStrategy<MockBean> strat = new ColumnPositionMappingStrategy<MockBean>();
+      strat.setType(MockBean.class);
+      String[] columns = new String[]{"name", "orderNumber", "num"};
+      strat.setColumnMapping(columns);
+
+      StringWriter sw = new StringWriter();
+      CSVWriter writer = new CSVWriter(sw);
+      boolean needToWriteHeader = true;
+
+      for (MockBean mb : testData) {
+         boolean value = BeanToCsv.write(strat, writer, mb, needToWriteHeader);
+         needToWriteHeader &= false;
+         assertTrue(value);
+      }
+
+      String content = sw.getBuffer().toString();
+      assertNotNull(content);
+      assertEquals(TEST_STRING, content);
+   }
+
+   @Test
+   public void writeSingleBeanMethodReturnsFalseIfNullPassedInStatic() {
+      ColumnPositionMappingStrategy<MockBean> strat = new ColumnPositionMappingStrategy<MockBean>();
+      strat.setType(MockBean.class);
+      String[] columns = new String[]{"name", "orderNumber", "num"};
+      strat.setColumnMapping(columns);
+
+      StringWriter sw = new StringWriter();
+      CSVWriter writer = new CSVWriter(sw);
+
+      assertFalse(BeanToCsv.write(strat, writer, null, false));
+   }
+
+   @Test(expected = RuntimeException.class)
+   public void handleExceptionStatic() {
+      StringWriter sw = new StringWriter();
+      CSVWriter writer = new CSVWriter(sw);
+      BeanToCsv.write(createErrorMappingStrategy(), writer, testData.get(0), false);
+   }
+
+   @Test
+   public void testWriteQuotesWithAnnotatedBeanStatic() throws IOException {
+      ColumnPositionMappingStrategy<SimpleAnnotatedMockBean> strat = new ColumnPositionMappingStrategy<SimpleAnnotatedMockBean>();
+      strat.setType(SimpleAnnotatedMockBean.class);
+      String[] columns = new String[]{"name", "orderNumber", "num"};
+      strat.setColumnMapping(columns);
+
+      StringWriter sw = new StringWriter();
+
+      boolean value = BeanToCsv.write(strat, sw, annotatedTestData);
+
+      assertTrue(value);
+
+      String content = sw.getBuffer().toString();
+      assertNotNull(content);
+      assertEquals(TEST_STRING, content);
+   }
+
+   @Test
+   public void testWriteNullsStatic() throws IOException {
+      ColumnPositionMappingStrategy<MockBean> strat = new ColumnPositionMappingStrategy<MockBean>();
+      strat.setType(MockBean.class);
+      String[] columns = new String[]{"name", "orderNumber", "num"};
+      strat.setColumnMapping(columns);
+
+      StringWriter sw = new StringWriter();
+
+      boolean value = BeanToCsv.write(strat, sw, nullData);
+
+      assertTrue(value);
+
+      String content = sw.getBuffer().toString();
+      assertNotNull(content);
+      assertEquals(NULL_TEST_STRING, content);
+   }
+
+   @Test
+   public void testWriteNullsWithAnnotatedBeanStatic() throws IOException {
+      ColumnPositionMappingStrategy<SimpleAnnotatedMockBean> strat = new ColumnPositionMappingStrategy<SimpleAnnotatedMockBean>();
+      strat.setType(SimpleAnnotatedMockBean.class);
+      String[] columns = new String[]{"name", "orderNumber", "num"};
+      strat.setColumnMapping(columns);
+
+      StringWriter sw = new StringWriter();
+
+      boolean value = BeanToCsv.write(strat, sw, nullAnnotatedData);
+
+      assertTrue(value);
+
+      String content = sw.getBuffer().toString();
+      assertNotNull(content);
+      assertEquals(NULL_TEST_STRING, content);
+   }
 }

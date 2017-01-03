@@ -19,10 +19,10 @@ import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvBindByPosition;
 
 /**
- * For test cases 21 und 22 (writing).
+ * For test cases involving binding unknown data types to columns of a CSV file.
  * @author Andrew Rucker Jones
  */
-public class BindByNameUnknownType {
+public class BindUnknownType {
     public static final String TOSTRING = "This is just a test of unknown datatypes.";
     
     @CsvBindByName

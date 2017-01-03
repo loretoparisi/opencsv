@@ -29,8 +29,8 @@ public class AnnotatedMockBeanFullDerived extends AnnotatedMockBeanFull {
      * <li>81</li>
      * </ul></p>
      * <p>Used for the following test cases, writing:<ul>
-     * <li>33</li>
-     * <li>34</li>
+     * <li>Writing a subclass with annotations in the subclass and the superclass</li>
+     * <li>Specifying a superclass, but writing a subclass</li>
      * </ul></p>
      */
     @CsvBindByName(required = true, column = "int in subclass")

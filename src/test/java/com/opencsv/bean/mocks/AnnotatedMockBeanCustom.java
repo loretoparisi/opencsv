@@ -41,7 +41,7 @@ public class AnnotatedMockBeanCustom {
      * <li>56</li>
      * </ul></p>
      * <p>Used for the following test cases, writing:<ul>
-     * <li>5</li>
+     * <li>Writing with ConvertGermanToBooleanRequired</li>
      * </ul></p>
      */
     @CsvCustomBindByName(column = "bool1", converter = ConvertGermanToBooleanRequired.class)
@@ -68,7 +68,7 @@ public class AnnotatedMockBeanCustom {
      * <li>59</li>
      * </ul></p>
      * <p>Used for the following test cases, writing:<ul>
-     * <li>4</li>
+     * <li>Writing with ConvertGermanToBoolean</li>
      * </ul></p>
      */
     @CsvCustomBindByName(column = "bool2", converter = ConvertGermanToBoolean.class)
@@ -112,7 +112,7 @@ public class AnnotatedMockBeanCustom {
      * <li>62</li>
      * </ul></p>
      * <p>Used for the following test cases, writing:<ul>
-     * <li>14</li>
+     * <li>Writing with @CsvBindByPosition and @CsvCustomBindByPosition</li>
      * </ul></p>
      */
     @CsvCustomBindByName(column = "byte3", converter = CustomTestMapper.class)
@@ -126,7 +126,7 @@ public class AnnotatedMockBeanCustom {
      * <li>19</li>
      * </ul></p>
      * <p>Used for the following test cases, writing:<ul>
-     * <li>15</li>
+     * <li>Writing with @CsvBindByName, @CsvCustomBindByName and @CsvBind</li>
      * </ul></p>
      */
     @CsvCustomBindByName(column = "byte4", converter = CustomTestMapper.class)
@@ -402,7 +402,7 @@ public class AnnotatedMockBeanCustom {
      * <li>58</li>
      * </ul></p>
      * <p>Used for the following test cases, writing:<ul>
-     * <li>6</li>
+     * <li>Writing with ConvertSplitOnWhitespace</li>
      * </ul></p>
      */
     @CsvCustomBindByName(column = "string2", converter = ConvertSplitOnWhitespace.class)

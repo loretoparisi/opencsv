@@ -18,7 +18,7 @@ package com.opencsv.bean.mocks;
 import com.opencsv.bean.CsvBind;
 
 /**
- * For test case 23 (writing).
+ * For test case "writing with @CsvBind attached to unsupported type".
  * @author Andrew Rucker Jones
  */
 public class BindByNameUnknownTypeLegacy {

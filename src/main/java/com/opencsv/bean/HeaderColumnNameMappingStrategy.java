@@ -271,12 +271,7 @@ public class HeaderColumnNameMappingStrategy<T> implements MappingStrategy<T> {
                         .converter();
                 BeanField bean = instantiateCustomConverter(converter);
                 bean.setField(field);
-                if(StringUtils.isEmpty(columnName)) {
-                    fieldMap.put(field.getName().toUpperCase(), bean);
-                }
-                else {
-                    fieldMap.put(columnName, bean);
-                }
+                fieldMap.put(columnName, bean);
             }
 
             // Then check for CsvBindByName.

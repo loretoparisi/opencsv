@@ -49,7 +49,7 @@ public class AnnotatedMockBeanFull {
      * <li>54</li>
      * </ul></p>
      * <p>Used for the following test cases, writing:<ul>
-     * <li>2</li>
+     * <li>Writing every wrapped primitive data type</li>
      * </ul></p>
      */
     @CsvBindByName(column = "bool1")
@@ -66,7 +66,7 @@ public class AnnotatedMockBeanFull {
      * <li>53</li>
      * </ul></p>
      * <p>Used for the following test cases, writing:<ul>
-     * <li>1</li>
+     * <li>Writing every primitive data type</li>
      * </ul></p>
      */
     @CsvBindByName()
@@ -82,7 +82,7 @@ public class AnnotatedMockBeanFull {
      * <li>55</li>
      * </ul></p>
      * <p>Used for the following test cases, writing:<ul>
-     * <li>2</li>
+     * <li>Writing every wrapped primitive data type</li>
      * </ul></p>
      */
     @CsvBindByName(column = "byte1")
@@ -99,9 +99,9 @@ public class AnnotatedMockBeanFull {
      * <li>51</li>
      * </ul></p>
      * <p>Used for the following test cases, writing:<ul>
-     * <li>24</li>
-     * <li>29</li>
-     * <li>32</li>
+     * <li>Writing a required wrapped primitive field that is null</li>
+     * <li>Writing bad data with exceptions captured</li>
+     * <li>Writing multiple times with exceptions from each write</li>
      * </ul></p>
      */
     @CsvBindByName(required = true, column = "byte2", locale = "de")
@@ -115,7 +115,7 @@ public class AnnotatedMockBeanFull {
      * <li>48</li>
      * </ul></p>
      * <p>Used for the following test cases, writing:<ul>
-     * <li>1</li>
+     * <li>Writing every primitive data type</li>
      * </ul></p>
      */
     @CsvBindByName(required = true, column = "byte3")
@@ -139,7 +139,7 @@ public class AnnotatedMockBeanFull {
      * <li>49</li>
      * </ul></p>
      * <p>Used for the following test cases, writing:<ul>
-     * <li>2</li>
+     * <li>Writing every wrapped primitive data type</li>
      * </ul></p>
      */
     @CsvBindByName(column = "double1", locale = "en_US")
@@ -163,7 +163,7 @@ public class AnnotatedMockBeanFull {
      * <li>48</li>
      * </ul></p>
      * <p>Used for the following test cases, writing:<ul>
-     * <li>1</li>
+     * <li>Writing every primitive data type</li>
      * </ul></p>
      */
     @CsvBindByName(column = "double3")
@@ -187,8 +187,8 @@ public class AnnotatedMockBeanFull {
      * <li>49</li>
      * </ul></p>
      * <p>Used for the following test cases, writing:<ul>
-     * <li>2</li>
-     * <li>25</li>
+     * <li>Writing every wrapped primitive data type</li>
+     * <li>Writing an optional wrapped primitive field that is null</li>
      * </ul></p>
      */
     @CsvBindByName(column = "float1")
@@ -214,7 +214,7 @@ public class AnnotatedMockBeanFull {
      * <li>64</li>
      * </ul></p>
      * <p>Used for the following test cases, writing:<ul>
-     * <li>1</li>
+     * <li>Writing every primitive data type</li>
      * </ul></p>
      */
     @CsvBindByName(column = "float3")
@@ -238,7 +238,7 @@ public class AnnotatedMockBeanFull {
      * <li>49</li>
      * </ul></p>
      * <p>Used for the following test cases, writing:<ul>
-     * <li>2</li>
+     * <li>Writing every wrapped primitive data type</li>
      * </ul></p>
      */
     @CsvBindByName(column = "integer1")
@@ -264,7 +264,7 @@ public class AnnotatedMockBeanFull {
      * <li>66</li>
      * </ul></p>
      * <p>Used for the following test cases, writing:<ul>
-     * <li>1</li>
+     * <li>Writing every primitive data type</li>
      * </ul></p>
      */
     @CsvBindByName(column = "integer3")
@@ -289,7 +289,7 @@ public class AnnotatedMockBeanFull {
      * <li>49</li>
      * </ul></p>
      * <p>Used for the following test cases, writing:<ul>
-     * <li>2</li>
+     * <li>Writing every wrapped primitive data type</li>
      * </ul></p>
      */
     @CsvBindByName(column = "long1")
@@ -315,7 +315,7 @@ public class AnnotatedMockBeanFull {
      * <li>68</li>
      * </ul></p>
      * <p>Used for the following test cases, writing:<ul>
-     * <li>1</li>
+     * <li>Writing every primitive data type</li>
      * </ul></p>
      */
     @CsvBindByName(column = "long3")
@@ -339,7 +339,7 @@ public class AnnotatedMockBeanFull {
      * <li>49</li>
      * </ul></p>
      * <p>Used for the following test cases, writing:<ul>
-     * <li>2</li>
+     * <li>Writing every wrapped primitive data type</li>
      * </ul></p>
      */
     @CsvBindByName(column = "short1")
@@ -363,7 +363,7 @@ public class AnnotatedMockBeanFull {
      * <li>48</li>
      * </ul></p>
      * <p>Used for the following test cases, writing:<ul>
-     * <li>1</li>
+     * <li>Writing every primitive data type</li>
      * </ul></p>
      */
     @CsvBindByName(column = "short3")
@@ -387,7 +387,7 @@ public class AnnotatedMockBeanFull {
      * <li>49</li>
      * </ul></p>
      * <p>Used for the following test cases, writing:<ul>
-     * <li>2</li>
+     * <li>Writing every wrapped primitive data type</li>
      * </ul></p>
      */
     @CsvBindByName(column = "char1")
@@ -401,7 +401,7 @@ public class AnnotatedMockBeanFull {
      * <li>48</li>
      * </ul></p>
      * <p>Used for the following test cases, writing:<ul>
-     * <li>1</li>
+     * <li>Writing every primitive data type</li>
      * </ul></p>
      */
     @CsvBindByName(column = "char2")
@@ -414,7 +414,7 @@ public class AnnotatedMockBeanFull {
      * <li>29</li>
      * </ul></p>
      * <p>Used for the following test cases, writing:<ul>
-     * <li>3</li>
+     * <li>Writing String, BigDecimal and BigInteger</li>
      * </ul></p>
      */
     @CsvBindByName(column = "bigdecimal1")
@@ -437,7 +437,7 @@ public class AnnotatedMockBeanFull {
      * <li>29</li>
      * </ul></p>
      * <p>Used for the following test cases, writing:<ul>
-     * <li>3</li>
+     * <li>Writing String, BigDecimal and BigInteger</li>
      * </ul></p>
      */
     @CsvBindByName(column = "biginteger1")
@@ -462,8 +462,8 @@ public class AnnotatedMockBeanFull {
      * <li>83</li>
      * </ul></p>
      * <p>Used for the following test cases, writing:<ul>
-     * <li>26</li>
-     * <li>32</li>
+     * <li>Writing a required date field that is null</li>
+     * <li>Writing multiple times with exceptions from each write</li>
      * </ul></p>
      */
     @CsvBindByName(column = "date1", required = true)
@@ -491,7 +491,7 @@ public class AnnotatedMockBeanFull {
      * <li>80</li>
      * </ul></p>
      * <p>Used for the following test cases, writing:<ul>
-     * <li>27</li>
+     * <li>Writing an optional date field that is null</li>
      * </ul></p>
      */
     @CsvBindByName(column = "date3")
@@ -612,7 +612,7 @@ public class AnnotatedMockBeanFull {
      * <li>48</li>
      * </ul></p>
      * <p>Used for the following test cases, writing:<ul>
-     * <li>3</li>
+     * <li>Writing String, BigDecimal and BigInteger</li>
      * </ul></p>
      */
     @CsvBindByName(column = "string1")
