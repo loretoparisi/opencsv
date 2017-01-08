@@ -16,6 +16,7 @@
 package com.opencsv.bean;
 
 import com.opencsv.CSVWriter;
+
 import java.io.Writer;
 
 /**
@@ -40,7 +41,12 @@ public class StatefulBeanToCsvBuilder<T> {
     private StatefulBeanToCsvBuilder() {
         throw new IllegalStateException("This class may never be instantiated with the nullary constructor.");
     }
-    
+
+    /**
+     * Default constructor - Being stateful the writer is required by the builder at the start and not added in later.
+     *
+     * @param writer - the writer that will be used to output the csv version of the bean.
+     */
     public StatefulBeanToCsvBuilder(Writer writer) {
         this.writer = writer;
     }
