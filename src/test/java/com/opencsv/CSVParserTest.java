@@ -618,7 +618,7 @@ public class CSVParserTest {
 
         StringBuilder sb = new StringBuilder(ICSVParser.INITIAL_READ_SIZE);
 
-        sb.append(",,,\"\",");
+        sb.append(", ,,\"\",");
 
         CSVParserBuilder builder = new CSVParserBuilder();
         ICSVParser parser = builder.withFieldAsNull(CSVReaderNullFieldIndicator.BOTH).build();
@@ -627,7 +627,7 @@ public class CSVParserTest {
 
         assertEquals(5, item.length);
         assertNull(item[0]);
-        assertNull(item[1]);
+        assertEquals(" ", item[1]);
         assertNull(item[2]);
         assertNull(item[3]);
         assertNull(item[4]);

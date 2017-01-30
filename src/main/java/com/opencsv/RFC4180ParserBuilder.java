@@ -87,7 +87,7 @@ public class RFC4180ParserBuilder {
      */
     public RFC4180Parser build() {
 
-        return new RFC4180Parser(quoteChar, separator);
+        return new RFC4180Parser(quoteChar, separator, nullFieldIndicator);
 
     }
 
@@ -113,6 +113,17 @@ public class RFC4180ParserBuilder {
     public RFC4180ParserBuilder withQuoteChar(
             final char quoteChar) {
         this.quoteChar = quoteChar;
+        return this;
+    }
+
+    /**
+     * Sets the NullFieldIndicator.
+     *
+     * @param fieldIndicator CSVReaderNullFieldIndicator set to what should be considered a null field.
+     * @return The RFC4180ParserBuilder
+     */
+    public RFC4180ParserBuilder withFieldAsNull(final CSVReaderNullFieldIndicator fieldIndicator) {
+        this.nullFieldIndicator = fieldIndicator;
         return this;
     }
 
