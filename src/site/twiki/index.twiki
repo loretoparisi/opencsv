@@ -156,7 +156,7 @@ Add a dependency element to your pom:
   <dependency>
      <groupId>com.opencsv</groupId>
      <artifactId>opencsv</artifactId>
-     <version>3.7</version>
+     <version>3.9</version>
   </dependency>
 </verbatim>
 
