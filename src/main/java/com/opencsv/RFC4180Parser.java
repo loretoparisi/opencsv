@@ -29,36 +29,43 @@ import java.util.regex.Pattern;
  * ICSVParser parser = builder.withParserType(ParserType.RFC4180Parser).build()
  *
  * @author Scott Conway
+ * @since 3.9
  */
 
 public class RFC4180Parser implements ICSVParser {
+    
     /**
      * This is needed by the split command in case the separator character is a regex special character.
      */
     private static final Pattern SPECIAL_REGEX_CHARS = Pattern.compile("[{}()\\[\\].+*?^$\\\\|]");
+    
     /**
      * This is the character that the RFC4180Parser will treat as the separator.
      */
     private final char separator;
+    
     /**
-     * Separator character as String (used for split command)
+     * Separator character as String (used for split command).
      */
     private final String separatorAsString;
+    
     /**
      * This is the character that the RFC4180Parser will treat as the quotation character.
      */
     private final char quotechar;
+    
     /**
-     * This is the fields that the parser will automatically return null
+     * This is the fields that the parser will automatically return null.
      */
     private final CSVReaderNullFieldIndicator nullFieldIndicator;
+    
     /**
-     * This is what was from a previous read of a multi lined csv record.
+     * This is what was from a previous read of a multi-lined csv record.
      */
     private String pending;
 
     /**
-     * Default constructor for the RFC4180Parser.  Uses values from the ICSVParser
+     * Default constructor for the RFC4180Parser.  Uses values from the ICSVParser.
      */
     public RFC4180Parser() {
         this(ICSVParser.DEFAULT_QUOTE_CHARACTER, ICSVParser.DEFAULT_SEPARATOR, CSVReaderNullFieldIndicator.NEITHER);
@@ -69,7 +76,7 @@ public class RFC4180Parser implements ICSVParser {
      *
      * @param separator The delimiter to use for separating entries
      * @param quoteChar The character to use for quoted elements
-     * @param nullFieldIndicator indicate what should be considered null
+     * @param nullFieldIndicator Indicate what should be considered null
      */
     RFC4180Parser(char quoteChar, char separator, CSVReaderNullFieldIndicator nullFieldIndicator) {
         this.quotechar = quoteChar;
@@ -78,17 +85,11 @@ public class RFC4180Parser implements ICSVParser {
         this.nullFieldIndicator = nullFieldIndicator;
     }
 
-    /**
-     * @return The default separator for this parser.
-     */
     @Override
     public char getSeparator() {
         return separator;
     }
 
-    /**
-     * @return The default quotation character for this parser.
-     */
     @Override
     public char getQuotechar() {
         return quotechar;
@@ -104,14 +105,6 @@ public class RFC4180Parser implements ICSVParser {
         return parseLine(nextLine, true);
     }
 
-    /**
-     * Parses an incoming String and returns an array of elements.
-     * This method is used when all data is contained in a single line.
-     *
-     * @param nextLine Line to be parsed.
-     * @return The list of elements, or null if nextLine is null
-     * @throws IOException If bad things happen during the read
-     */
     @Override
     public String[] parseLine(String nextLine) throws IOException {
         return parseLine(nextLine, false);
@@ -121,7 +114,7 @@ public class RFC4180Parser implements ICSVParser {
      * Parses an incoming String and returns an array of elements.
      *
      * @param nextLine The string to parse
-     * @param multi    Does it take multiple lines to form a single record.
+     * @param multi    Does it take multiple lines to form a single record?
      * @return The list of elements, or null if nextLine is null
      * @throws IOException If bad things happen during the read
      */
@@ -144,12 +137,12 @@ public class RFC4180Parser implements ICSVParser {
         String lineToProcess = multi && pending != null ? pending + nextLine : nextLine;
         pending = null;
 
-        if (!lineToProcess.contains(Character.toString(quotechar))) {
+        if (!StringUtils.contains(lineToProcess, quotechar)) {
             elements = handleEmptySeparators(tokenizeStringIntoArray(lineToProcess));
         } else {
             elements = handleEmptySeparators(splitWhileNotInQuotes(lineToProcess, multi));
             for (int i = 0; i < elements.length; i++) {
-                if (elements[i] != null && elements[i].contains(Character.toString(quotechar))) {
+                if (StringUtils.contains(elements[i], quotechar)) {
                     elements[i] = handleQuotes(elements[i]);
                 }
             }

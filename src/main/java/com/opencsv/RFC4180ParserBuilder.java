@@ -14,19 +14,20 @@ import com.opencsv.enums.CSVReaderNullFieldIndicator;
  * </code></p>
  *
  * @see RFC4180Parser
+ * @since 3.9
  */
 public class RFC4180ParserBuilder {
 
     private char separator = ICSVParser.DEFAULT_SEPARATOR;
     private char quoteChar = ICSVParser.DEFAULT_QUOTE_CHARACTER;
-    private char escapeChar = ICSVParser.DEFAULT_ESCAPE_CHARACTER;
-    private boolean strictQuotes = ICSVParser.DEFAULT_STRICT_QUOTES;
-    private boolean ignoreLeadingWhiteSpace = ICSVParser.DEFAULT_IGNORE_LEADING_WHITESPACE;
-    private boolean ignoreQuotations = ICSVParser.DEFAULT_IGNORE_QUOTATIONS;
+    private final char escapeChar = ICSVParser.DEFAULT_ESCAPE_CHARACTER;
+    private final boolean strictQuotes = ICSVParser.DEFAULT_STRICT_QUOTES;
+    private final boolean ignoreLeadingWhiteSpace = ICSVParser.DEFAULT_IGNORE_LEADING_WHITESPACE;
+    private final boolean ignoreQuotations = ICSVParser.DEFAULT_IGNORE_QUOTATIONS;
     private CSVReaderNullFieldIndicator nullFieldIndicator = CSVReaderNullFieldIndicator.NEITHER;
 
     /**
-     * default constructor
+     * Default constructor.
      */
     public RFC4180ParserBuilder() {
     }
