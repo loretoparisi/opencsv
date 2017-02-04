@@ -19,10 +19,6 @@ public class RFC4180ParserBuilder {
 
     private char separator = ICSVParser.DEFAULT_SEPARATOR;
     private char quoteChar = ICSVParser.DEFAULT_QUOTE_CHARACTER;
-    private char escapeChar = ICSVParser.DEFAULT_ESCAPE_CHARACTER;
-    private boolean strictQuotes = ICSVParser.DEFAULT_STRICT_QUOTES;
-    private boolean ignoreLeadingWhiteSpace = ICSVParser.DEFAULT_IGNORE_LEADING_WHITESPACE;
-    private boolean ignoreQuotations = ICSVParser.DEFAULT_IGNORE_QUOTATIONS;
     private CSVReaderNullFieldIndicator nullFieldIndicator = CSVReaderNullFieldIndicator.NEITHER;
 
     /**
@@ -43,34 +39,6 @@ public class RFC4180ParserBuilder {
      */
     public char getQuoteChar() {
         return quoteChar;
-    }
-
-    /**
-     * @return The defined escape character.
-     */
-    public char getEscapeChar() {
-        return escapeChar;
-    }
-
-    /**
-     * @return The defined strict quotation setting.
-     */
-    public boolean isStrictQuotes() {
-        return strictQuotes;
-    }
-
-    /**
-     * @return The defined ignoreLeadingWhiteSpace setting.
-     */
-    public boolean isIgnoreLeadingWhiteSpace() {
-        return ignoreLeadingWhiteSpace;
-    }
-
-    /**
-     * @return The defined ignoreQuotation setting.
-     */
-    public boolean isIgnoreQuotations() {
-        return ignoreQuotations;
     }
 
     /**

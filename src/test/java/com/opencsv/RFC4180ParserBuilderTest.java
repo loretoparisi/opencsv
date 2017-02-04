@@ -24,18 +24,7 @@ public class RFC4180ParserBuilderTest {
         assertEquals(
                 ICSVParser.DEFAULT_QUOTE_CHARACTER,
                 builder.getQuoteChar());
-        assertEquals(
-                ICSVParser.DEFAULT_ESCAPE_CHARACTER,
-                builder.getEscapeChar());
-        assertEquals(
-                ICSVParser.DEFAULT_STRICT_QUOTES,
-                builder.isStrictQuotes());
-        assertEquals(
-                ICSVParser.DEFAULT_IGNORE_LEADING_WHITESPACE,
-                builder.isIgnoreLeadingWhiteSpace());
-        assertEquals(
-                ICSVParser.DEFAULT_IGNORE_QUOTATIONS,
-                builder.isIgnoreQuotations());
+
         assertEquals(CSVReaderNullFieldIndicator.NEITHER, builder.nullFieldIndicator());
 
         ICSVParser parser = builder.build();
