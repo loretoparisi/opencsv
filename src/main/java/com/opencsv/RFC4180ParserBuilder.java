@@ -14,6 +14,7 @@ import com.opencsv.enums.CSVReaderNullFieldIndicator;
  * </code></p>
  *
  * @see RFC4180Parser
+ * @since 3.9
  */
 public class RFC4180ParserBuilder {
 
@@ -22,7 +23,7 @@ public class RFC4180ParserBuilder {
     private CSVReaderNullFieldIndicator nullFieldIndicator = CSVReaderNullFieldIndicator.NEITHER;
 
     /**
-     * default constructor
+     * Default constructor.
      */
     public RFC4180ParserBuilder() {
     }
