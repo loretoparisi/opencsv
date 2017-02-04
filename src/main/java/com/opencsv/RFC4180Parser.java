@@ -33,32 +33,32 @@ import java.util.regex.Pattern;
  */
 
 public class RFC4180Parser implements ICSVParser {
-    
+
     /**
      * This is needed by the split command in case the separator character is a regex special character.
      */
     private static final Pattern SPECIAL_REGEX_CHARS = Pattern.compile("[{}()\\[\\].+*?^$\\\\|]");
-    
+
     /**
      * This is the character that the RFC4180Parser will treat as the separator.
      */
     private final char separator;
-    
+
     /**
      * Separator character as String (used for split command).
      */
     private final String separatorAsString;
-    
+
     /**
      * This is the character that the RFC4180Parser will treat as the quotation character.
      */
     private final char quotechar;
-    
+
     /**
      * This is the fields that the parser will automatically return null.
      */
     private final CSVReaderNullFieldIndicator nullFieldIndicator;
-    
+
     /**
      * This is what was from a previous read of a multi-lined csv record.
      */
