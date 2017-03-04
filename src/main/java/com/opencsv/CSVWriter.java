@@ -386,7 +386,7 @@ public class CSVWriter implements Closeable, Flushable {
     */
    protected boolean checkCharactersToEscape(char nextChar) {
       return quotechar == NO_QUOTE_CHARACTER
-              ? (nextChar == quotechar || nextChar == escapechar || nextChar == separator)
+              ? (nextChar == quotechar || nextChar == escapechar || nextChar == separator || nextChar == '\n')
               : (nextChar == quotechar || nextChar == escapechar);
    }
 

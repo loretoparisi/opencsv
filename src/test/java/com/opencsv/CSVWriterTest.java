@@ -621,6 +621,22 @@ public class CSVWriterTest {
    }
 
    @Test
+   public void issue136escapeNewLineCharactersWhenNoQuoteCharIsSet() {
+      String[] header = {"Foo", "Bar", "baz"};
+      char escapeCharacter = '\\';
+      String[] value = {"v1", "v2", "v3\n"};
+      List<String[]> lines = new ArrayList<String[]>();
+      lines.add(header);
+      lines.add(value);
+      StringWriter sw = new StringWriter();
+      CSVWriter writer = new CSVWriter(sw, CSVWriter.DEFAULT_SEPARATOR, CSVWriter.NO_QUOTE_CHARACTER, escapeCharacter);
+      writer.writeAll(lines);
+
+      String result = sw.toString();
+      assertNotNull(result);
+      assertEquals("Foo,Bar,baz\nv1,v2,v3" + escapeCharacter + "\n\n", result);
+   }
+   @Test
    public void testIOException() throws IOException {
       Writer writer = mock(Writer.class);
       doThrow(IOException.class).when(writer).write(anyString());
